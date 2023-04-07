@@ -14,7 +14,6 @@ const Header = (props: Props) => {
           MoviePool
         </div>
         <nav className={styles.navigationMenu}>
-          <Link href={"/movie"}>Movie</Link>
           <Link href={"/kids"}>Kids</Link>
         </nav>
       </div>
