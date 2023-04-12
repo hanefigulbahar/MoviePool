@@ -1,11 +1,18 @@
-import React from "react";
+"use client";
+import React, { FC } from "react";
 import Link from "next/link";
+
 import { BiCameraMovie } from "react-icons/bi";
 import styles from "./styles.module.css";
+import selectLanguage from "@/utils/translate";
+import LanguageSwich from "../language-switch";
+import { useAppSelector } from "@/hooks";
 
-type Props = {};
+interface HeaderProps {}
 
-const Header = (props: Props) => {
+const Header: FC<HeaderProps> = () => {
+  const language = useAppSelector((state) => state.language);
+  const { dictionary } = selectLanguage(language.language);
   return (
     <header className={`${styles.header} container fluid`}>
       <div className={styles.headerWrapper}>
@@ -14,7 +21,10 @@ const Header = (props: Props) => {
           MoviePool
         </div>
         <nav className={styles.navigationMenu}>
-          <Link href={"/kids"}>Kids</Link>
+          <Link href={"/kids"}>
+            {dictionary.LANG_KEY_KIDS.toLocaleUpperCase()}
+          </Link>
+          <LanguageSwich />
         </nav>
       </div>
     </header>

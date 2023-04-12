@@ -3,14 +3,25 @@ import Image from "next/image";
 import { HiOutlineTicket } from "react-icons/hi";
 
 import styles from "./styles.module.css";
-import { Movie } from "@/types/movie";
-const imgBaseURL = "https://image.tmdb.org/t/p/original";
-interface FeaturedMovieProps {
-  movie: Movie;
-}
+import selectLanguage, { Language } from "@/utils/translate";
+import { store } from "@/store";
 
-const FeaturedMovie: FC<FeaturedMovieProps> = ({ movie }) => {
-  console.log(movie);
+const imgBaseURL = "https://image.tmdb.org/t/p/original";
+
+interface FeaturedMovieProps {}
+
+const FeaturedMovie: FC<FeaturedMovieProps> = () => {
+  const movieData = store.getState().topRatedMovie;
+  const { selectedByGenre } = store.getState().selectedByGender;
+
+  const randomMovie = movieData.topRatedMovies
+    ? movieData.topRatedMovies[
+        Math.floor(Math.random() * movieData.topRatedMovies.length)
+      ]
+    : null;
+
+  const { dictionary } = selectLanguage(Language.en);
+
   return (
     <div className={`${styles.sectionMovie} containe fluid`}>
       <div className={styles.movieContent}>
@@ -18,31 +29,33 @@ const FeaturedMovie: FC<FeaturedMovieProps> = ({ movie }) => {
           <div className={styles.sectionIcon}>
             <HiOutlineTicket />
           </div>
-          <div className={styles.movieName}>{movie.title}</div>
+          <div className={styles.movieName}>{randomMovie?.title}</div>
         </div>
-        <div className={styles.movieDesc}>{movie.overview}</div>
+        <div className={styles.movieDesc}>{randomMovie?.overview}</div>
         <div className={styles.movieDetail}>
           <div>
-            IMDB:{" "}
-            <div className={styles.movieDetailValue}>{movie.vote_average}</div>
-          </div>
-          <div>
-            RELEASE:
+            {dictionary.LANG_KEY_IMDB}:
             <div className={styles.movieDetailValue}>
-              {movie.release_date.slice(0, 4)}
+              {randomMovie?.vote_average}
             </div>
           </div>
           <div>
-            LANGUAGE:
+            {dictionary.LANG_KEY_RELEASE}:
             <div className={styles.movieDetailValue}>
-              {movie.original_language.toUpperCase()}
+              {randomMovie?.release_date.slice(0, 4)}
+            </div>
+          </div>
+          <div>
+            {dictionary.LANG_KEY_LANGUAGE}:
+            <div className={styles.movieDetailValue}>
+              {randomMovie?.original_language.toUpperCase()}
             </div>
           </div>
         </div>
       </div>
       <div className={styles.movieCard}>
         <Image
-          src={imgBaseURL + movie.poster_path}
+          src={imgBaseURL + randomMovie?.poster_path}
           alt="name"
           unoptimized
           fill
@@ -52,7 +65,7 @@ const FeaturedMovie: FC<FeaturedMovieProps> = ({ movie }) => {
         <div className={styles.moviePosterOverlay}></div>
         <Image
           unoptimized
-          src={imgBaseURL + movie.backdrop_path}
+          src={imgBaseURL + randomMovie?.backdrop_path}
           alt={"title"}
           fill
         />

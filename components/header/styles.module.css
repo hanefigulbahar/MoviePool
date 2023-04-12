@@ -25,7 +25,9 @@
   font-weight: 700;
   letter-spacing: 2px;
 }
-
+.navigationMenu button {
+  color: #fafafa;
+}
 @media only screen and (max-width: 720px) {
   .header {
     padding: 0 0.5rem;

@@ -2,12 +2,14 @@ import Header from "@/components/header";
 import "@/styles/reset.css";
 import "@/styles/global.css";
 import { Inter } from "next/font/google";
+import StoreProvider from "@/store/store-provider";
+import { cookies } from "next/headers";
+import { store } from "@/store";
 
 export const metadata = {
   title: "MoviePool",
   description: "Movie Pool",
 };
-
 const inter = Inter({ subsets: ["latin"] });
 
 export default function RootLayout({
@@ -18,9 +20,10 @@ export default function RootLayout({
   return (
     <html lang="en" className={inter.className}>
       <body className="container">
-        <Header />
-        {children}
-        <div></div>
+        <StoreProvider>
+          <Header />
+          <main>{children}</main>
+        </StoreProvider>
       </body>
     </html>
   );

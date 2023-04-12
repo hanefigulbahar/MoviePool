@@ -1,19 +1,27 @@
 import React, { FC } from "react";
 import FeaturedMovie from "@/components/featured-movie";
-import { Movie } from "@/types/movie";
+import GenresSection from "@/components/genres-section";
+import MovieSection from "@/components/movie-section";
+import { store } from "@/store";
 
 interface HomeContainerProps {
-  topRatedMovies: Movie[];
+  categoryID: string[];
 }
 
-const HomeContainer: FC<HomeContainerProps> = ({ topRatedMovies }) => {
+const HomeContainer: FC<HomeContainerProps> = ({ categoryID }) => {
+  const { popularMovies } = store.getState().popularMovie;
+  const { topRatedMovies } = store.getState().topRatedMovie;
+  const { selectedByGenre } = store.getState().selectedByGender;
+
   return (
     <div>
-      <FeaturedMovie
-        movie={
-          topRatedMovies[Math.floor(Math.random() * topRatedMovies.length)]
-        }
-      />
+      <FeaturedMovie />
+      <GenresSection />
+      {selectedByGenre?.length !== undefined && (
+        <MovieSection popularMovies={selectedByGenre} title={categoryID[0]} />
+      )}
+      <MovieSection popularMovies={popularMovies} title="Popular Movies" />
+      <MovieSection popularMovies={topRatedMovies} title="TopRated Movies" />
     </div>
   );
 };
