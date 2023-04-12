@@ -60,3 +60,17 @@ export const fetchMoviesByGenre = createAsyncThunk(
     }
   }
 );
+
+export const fetchMoviesByID = createAsyncThunk(
+  "movies/fetchMoviesByID",
+  async (movieID: string) => {
+    try {
+      const res = await fetchData(`/movie/${movieID}`, {
+        query: "append_to_response=videos",
+      });
+      return res;
+    } catch (error) {
+      throw new Error("error");
+    }
+  }
+);

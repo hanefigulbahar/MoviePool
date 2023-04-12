@@ -17,11 +17,11 @@ const HomeContainer: FC<HomeContainerProps> = ({ categoryID }) => {
     <div>
       <FeaturedMovie />
       <GenresSection />
-      {selectedByGenre?.length !== undefined && (
-        <MovieSection popularMovies={selectedByGenre} title={categoryID[0]} />
+      {categoryID !== undefined && (
+        <MovieSection movie={selectedByGenre} title={categoryID[0]} />
       )}
-      <MovieSection popularMovies={popularMovies} title="Popular Movies" />
-      <MovieSection popularMovies={topRatedMovies} title="TopRated Movies" />
+      <MovieSection movie={popularMovies} title="Popular Movies" />
+      <MovieSection movie={topRatedMovies} title="TopRated Movies" />
     </div>
   );
 };

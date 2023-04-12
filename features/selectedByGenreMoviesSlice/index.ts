@@ -1,5 +1,5 @@
 import { fetchMoviesByGenre, fetchPopularMovies } from "@/service/movie";
-import { Genre, Movie } from "@/types/movie";
+import { Movie } from "@/types/movie";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface SelectedByGenre {

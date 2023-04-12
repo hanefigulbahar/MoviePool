@@ -1,5 +1,6 @@
 import genresSlice from "@/features/genresSlice";
 import languageSlice from "@/features/languageSlice";
+import movieByIDSlice from "@/features/movieByIDSlice";
 import popularMoviesSlice from "@/features/popularMoviesSlice";
 import selectedByGenreMoviesSlice from "@/features/selectedByGenreMoviesSlice";
 import topRatedMovieSlice from "@/features/topRatedMovieSlice";
@@ -13,6 +14,7 @@ export function createStore(preloadedState = {}) {
       popularMovie: popularMoviesSlice,
       genres: genresSlice,
       selectedByGender: selectedByGenreMoviesSlice,
+      selectedByID: movieByIDSlice,
     },
     preloadedState,
   });

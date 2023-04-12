@@ -6,15 +6,15 @@ import { Movie } from "@/types/movie";
 
 interface MovieSectionProps {
   title: string;
-  popularMovies: Movie[] | null;
+  movie: Movie[] | null;
 }
 
-const MovieSection: FC<MovieSectionProps> = ({ title, popularMovies }) => {
+const MovieSection: FC<MovieSectionProps> = ({ title, movie }) => {
   return (
     <div className={styles.moviesSection}>
       <h3 className={styles.title}>{title}</h3>
       <div className={styles.movies}>
-        {popularMovies?.map((movie) => (
+        {movie?.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />
         ))}
       </div>

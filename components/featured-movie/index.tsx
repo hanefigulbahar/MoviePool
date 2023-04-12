@@ -1,10 +1,10 @@
-import { FC, ReactNode } from "react";
+import { FC } from "react";
 import Image from "next/image";
 import { HiOutlineTicket } from "react-icons/hi";
-
 import styles from "./styles.module.css";
 import selectLanguage, { Language } from "@/utils/translate";
 import { store } from "@/store";
+import Link from "next/link";
 
 const imgBaseURL = "https://image.tmdb.org/t/p/original";
 
@@ -12,7 +12,6 @@ interface FeaturedMovieProps {}
 
 const FeaturedMovie: FC<FeaturedMovieProps> = () => {
   const movieData = store.getState().topRatedMovie;
-  const { selectedByGenre } = store.getState().selectedByGender;
 
   const randomMovie = movieData.topRatedMovies
     ? movieData.topRatedMovies[
@@ -53,14 +52,14 @@ const FeaturedMovie: FC<FeaturedMovieProps> = () => {
           </div>
         </div>
       </div>
-      <div className={styles.movieCard}>
+      <Link href={`/movie/${randomMovie?.id}`} className={styles.movieCard}>
         <Image
           src={imgBaseURL + randomMovie?.poster_path}
           alt="name"
           unoptimized
           fill
         />
-      </div>
+      </Link>
       <div className={styles.moviePoster}>
         <div className={styles.moviePosterOverlay}></div>
         <Image

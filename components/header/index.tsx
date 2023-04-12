@@ -16,10 +16,10 @@ const Header: FC<HeaderProps> = () => {
   return (
     <header className={`${styles.header} container fluid`}>
       <div className={styles.headerWrapper}>
-        <div className={styles.logo}>
+        <Link href={"/"} className={styles.logo}>
           <BiCameraMovie />
           MoviePool
-        </div>
+        </Link>
         <nav className={styles.navigationMenu}>
           <Link href={"/kids"}>
             {dictionary.LANG_KEY_KIDS.toLocaleUpperCase()}
