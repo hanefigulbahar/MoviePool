@@ -10,5 +10,5 @@
 
 .movie:hover {
   z-index: 9;
-  transform: scale(1.25);
+  transform: scale(1.1);
 }

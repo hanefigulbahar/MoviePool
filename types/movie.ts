@@ -31,7 +31,7 @@ export interface MovieDetails {
   poster_path: string;
   production_companies: ProductionCompany[];
   production_countries: ProductionCountry[];
-  release_date: Date;
+  release_date: string;
   revenue: number;
   runtime: number;
   spoken_languages: SpokenLanguage[];
@@ -42,8 +42,15 @@ export interface MovieDetails {
   vote_average: number;
   vote_count: number;
   videos: Videos;
+  success: boolean;
+  status_code: number;
+  status_message: string;
 }
-
+export interface MovieNotFound {
+  success: boolean;
+  status_code: number;
+  status_message: string;
+}
 export interface Genre {
   id: number;
   name: string;

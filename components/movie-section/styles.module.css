@@ -1,14 +1,17 @@
 .moviesSection {
-  margin-top: 36px;
-  overflow: scroll;
+  margin-top: 24px;
   height: 400px;
+  overflow: scroll;
+  scroll-snap-type: x mandatory;
 }
 
 .title {
-  margin-bottom: 12px;
+  margin: 24px 0;
   text-transform: uppercase;
   font-size: 24px;
   letter-spacing: -1px;
+  position: sticky;
+  left: 0;
 }
 
 .movies {
@@ -16,5 +19,4 @@
   width: max-content;
   height: 300px;
   gap: 24px;
-  scroll-snap-type: x mandatory;
 }

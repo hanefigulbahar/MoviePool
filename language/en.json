@@ -3,6 +3,8 @@
     "LANG_KEY_KIDS": "Kids",
     "LANG_KEY_RELEASE": "Release",
     "LANG_KEY_LANGUAGE": "Language",
-    "LANG_KEY_IMDB": "IMDB"
+    "LANG_KEY_IMDB": "IMDB",
+    "LANG_KEY_ERROR_MESSAGE": "Oppss... Are you lost? We don't have page like that. Sorry for that!",
+    "LANG_KEY_GO_HOME": "Go Home"
   }
 }

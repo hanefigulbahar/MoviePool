@@ -15,6 +15,7 @@ export function createStore(preloadedState = {}) {
       genres: genresSlice,
       selectedByGender: selectedByGenreMoviesSlice,
       selectedByID: movieByIDSlice,
+      resetSelectedMovies: selectedByGenreMoviesSlice,
     },
     preloadedState,
   });

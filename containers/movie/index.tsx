@@ -7,9 +7,6 @@ interface MovieContainerProps {}
 
 const MovieContainer: FC<MovieContainerProps> = () => {
   const { selectedMovie } = store.getState().selectedByID;
-  const video = selectedMovie?.videos.results.find(
-    (video) => video.name === "Official Trailer"
-  );
 
   return <>{selectedMovie !== null && <MovieDetail movie={selectedMovie} />}</>;
 };

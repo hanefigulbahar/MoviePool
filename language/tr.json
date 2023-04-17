@@ -3,6 +3,8 @@
     "LANG_KEY_KIDS": "Çocuk",
     "LANG_KEY_RELEASE": "Gösterim",
     "LANG_KEY_LANGUAGE": "Dil",
-    "LANG_KEY_IMDB": "IMDB"
+    "LANG_KEY_IMDB": "IMDB",
+    "LANG_KEY_ERROR_MESSAGE": "Oppss... Kayıp mı oldunuz? Üzgünüz böyle bir sayfaya sahip değiliz!",
+    "LANG_KEY_GO_HOME": "Anasayfaya Git"
   }
 }

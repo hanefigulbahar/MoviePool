@@ -13,6 +13,7 @@ const MovieSection: FC<MovieSectionProps> = ({ title, movie }) => {
   return (
     <div className={styles.moviesSection}>
       <h3 className={styles.title}>{title}</h3>
+
       <div className={styles.movies}>
         {movie?.map((movie) => (
           <MovieCard key={movie.id} movie={movie} />

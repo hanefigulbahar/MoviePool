@@ -1,5 +1,5 @@
 import { FC } from "react";
-import { MovieDetails } from "@/types/movie";
+import { MovieDetails, MovieNotFound } from "@/types/movie";
 import styles from "./styles.module.css";
 import { HiOutlineTicket } from "react-icons/hi";
 import selectLanguage, { Language } from "@/utils/translate";
@@ -14,10 +14,13 @@ const imgBaseURL = "https://image.tmdb.org/t/p/original";
 
 const MovieDetail: FC<MovieDetailProps> = ({ movie }) => {
   const { dictionary } = selectLanguage(Language.en);
-  const video = movie?.videos.results.find(
+
+  const video = movie?.videos?.results.find(
     (video) => video.name === "Official Trailer"
   );
-  console.log(movie);
+  if (movie.success === false) {
+    throw new Error();
+  }
   return (
     <div className={`${styles.sectionMovie} containe fluid`}>
       <div className={styles.movieContent}>
@@ -31,16 +34,20 @@ const MovieDetail: FC<MovieDetailProps> = ({ movie }) => {
         <div className={styles.movieDetail}>
           <div>
             {dictionary.LANG_KEY_IMDB}:
-            <div className={styles.movieDetailValue}>{movie?.vote_average}</div>
+            <div className={styles.movieDetailValue}>
+              {movie?.vote_average.toFixed(1)}
+            </div>
           </div>
           <div>
             {dictionary.LANG_KEY_RELEASE}:
-            <div className={styles.movieDetailValue}></div>
+            <div className={styles.movieDetailValue}>
+              {movie.release_date.slice(0, 4)}
+            </div>
           </div>
           <div>
             {dictionary.LANG_KEY_LANGUAGE}:
             <div className={styles.movieDetailValue}>
-              {movie?.original_language.toUpperCase()}
+              {movie?.original_language?.toUpperCase()}
             </div>
           </div>
         </div>

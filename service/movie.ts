@@ -4,7 +4,7 @@ const BASE_URL = "https://api.themoviedb.org/3";
 async function fetchData(path: string, { query = "" } = {}) {
   try {
     const res = await fetch(
-      `${BASE_URL}${path}?api_key=${process.env.API_KEY}&${query}`
+      `${BASE_URL}${path}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&${query}`
     );
     return res.json();
   } catch (error) {

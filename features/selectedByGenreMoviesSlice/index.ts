@@ -13,7 +13,11 @@ const initialState: SelectedByGenre = {
 const selectedByGenreMoviesSlice = createSlice({
   name: "selectedByGenre",
   initialState,
-  reducers: {},
+  reducers: {
+    resetSelectedMovies: (state) => {
+      state.selectedByGenre = [];
+    },
+  },
   extraReducers: (builder) => {
     builder.addCase(fetchMoviesByGenre.fulfilled, (state, action) => {
       state.selectedByGenre = action.payload;
@@ -22,3 +26,4 @@ const selectedByGenreMoviesSlice = createSlice({
 });
 
 export default selectedByGenreMoviesSlice.reducer;
+export const { resetSelectedMovies } = selectedByGenreMoviesSlice.actions;
