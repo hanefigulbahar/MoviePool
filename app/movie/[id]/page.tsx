@@ -4,7 +4,7 @@ import { fetchMoviesByID } from "@/service/movie";
 import { store } from "@/store";
 
 async function MovieDetail({ params }: any) {
-  const movieDetail = await store.dispatch(fetchMoviesByID(params.id));
+  await store.dispatch(fetchMoviesByID({ type: "movie", movieID: params.id }));
 
   return (
     <div>

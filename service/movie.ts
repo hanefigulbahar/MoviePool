@@ -12,10 +12,10 @@ async function fetchData(path: string, { query = "" } = {}) {
   }
 }
 export const fetchGenres = createAsyncThunk(
-  "categories/fetchGenres",
-  async () => {
+  "fetchGenres",
+  async (type: string) => {
     try {
-      const res = await fetchData("/genre/movie/list");
+      const res = await fetchData(`/genre/${type}/list`);
       return res.genres;
     } catch (error) {
       console.log("genres error");
@@ -23,35 +23,36 @@ export const fetchGenres = createAsyncThunk(
   }
 );
 
-export const fetchTopRatedMovies = createAsyncThunk(
-  "movies/fetchTopRatedMovies",
-  async () => {
+export const fetchTopRated = createAsyncThunk(
+  "fetchTopRated",
+  async (type: string) => {
     try {
-      const res = await fetchData("/movie/top_rated");
+      const res = await fetchData(`/${type}/top_rated`);
       return res.results;
     } catch (error) {
-      console.log("top rated movies error");
+      console.log("top rated error");
     }
   }
 );
 
-export const fetchPopularMovies = createAsyncThunk(
-  "movies/fetchPopularMovies",
-  async () => {
+export const fetchPopular = createAsyncThunk(
+  "fetchPopular",
+  async (type: string) => {
     try {
-      const res = await fetchData("/movie/popular");
+      const res = await fetchData(`/${type}/popular`);
       return res.results;
     } catch (error) {
-      console.log("popular movies error");
+      console.log("popular error");
     }
   }
 );
 
 export const fetchMoviesByGenre = createAsyncThunk(
   "movies/fetchMoviesByGenre",
-  async (id: string) => {
+  async (pathParams: { type: string; id: string }) => {
+    const { type, id } = pathParams;
     try {
-      const res = await fetchData(`/discover/movie`, {
+      const res = await fetchData(`/discover/${type}`, {
         query: `with_genres=${id}`,
       });
       return res.results;
@@ -63,9 +64,10 @@ export const fetchMoviesByGenre = createAsyncThunk(
 
 export const fetchMoviesByID = createAsyncThunk(
   "movies/fetchMoviesByID",
-  async (movieID: string) => {
+  async (pathParams: { type: string; movieID: string }) => {
+    const { type, movieID } = pathParams;
     try {
-      const res = await fetchData(`/movie/${movieID}`, {
+      const res = await fetchData(`/${type}/${movieID}`, {
         query: "append_to_response=videos",
       });
       return res;

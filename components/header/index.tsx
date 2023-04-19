@@ -21,9 +21,7 @@ const Header: FC<HeaderProps> = () => {
           MoviePool
         </Link>
         <nav className={styles.navigationMenu}>
-          <Link href={"/kids"}>
-            {dictionary.LANG_KEY_KIDS.toLocaleUpperCase()}
-          </Link>
+          <Link href={"/tv"}>{dictionary.LANG_KEY_TV.toLocaleUpperCase()}</Link>
           <LanguageSwich />
         </nav>
       </div>

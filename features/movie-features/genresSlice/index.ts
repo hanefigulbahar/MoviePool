@@ -1,5 +1,5 @@
-import { fetchGenres, fetchPopularMovies } from "@/service/movie";
-import { Genre, Movie } from "@/types/movie";
+import { fetchGenres } from "@/service/movie";
+import { Genre } from "@/types/movie";
 import { createSlice } from "@reduxjs/toolkit";
 
 interface IMovie {

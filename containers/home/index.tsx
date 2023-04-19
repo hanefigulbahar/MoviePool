@@ -13,11 +13,10 @@ const HomeContainer: FC<HomeContainerProps> = ({ categoryName }) => {
   const { topRatedMovies } = store.getState().topRatedMovie;
   const { selectedByGenre } = store.getState().selectedByGender;
   const { genres } = store.getState().genres;
-
   return (
     <div>
-      <FeaturedMovie />
-      <GenresSection />
+      <FeaturedMovie type="movie" movieData={topRatedMovies} />
+      <GenresSection genres={genres} />
       {selectedByGenre?.length !== 0 &&
         selectedByGenre !== null &&
         !!categoryName && (

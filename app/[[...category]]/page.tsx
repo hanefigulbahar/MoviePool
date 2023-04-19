@@ -1,18 +1,18 @@
 import HomeContainer from "@/containers/home";
-import { resetSelectedMovies } from "@/features/selectedByGenreMoviesSlice";
+import { resetSelectedMovies } from "@/features/movie-features/selectedByGenreMoviesSlice";
 
 import {
   fetchGenres,
   fetchMoviesByGenre,
-  fetchPopularMovies,
-  fetchTopRatedMovies,
+  fetchPopular,
+  fetchTopRated,
 } from "@/service/movie";
 import { store } from "@/store";
 
-export default async function Home({ params }: any) {
-  await store.dispatch(fetchTopRatedMovies());
-  await store.dispatch(fetchPopularMovies());
-  await store.dispatch(fetchGenres());
+async function Home({ params }: any) {
+  await store.dispatch(fetchTopRated("movie"));
+  await store.dispatch(fetchPopular("movie"));
+  await store.dispatch(fetchGenres("movie"));
 
   const { genres } = store.getState().genres;
 
@@ -21,7 +21,9 @@ export default async function Home({ params }: any) {
       genres?.find((genre) => genre.id === Number(params.category[1])) &&
       genres?.find((genre) => genre.name == params?.category[0])
     ) {
-      await store.dispatch(fetchMoviesByGenre(params.category[1]));
+      await store.dispatch(
+        fetchMoviesByGenre({ type: "movie", id: params.category[1] })
+      );
     } else {
       throw new Error();
     }
@@ -35,3 +37,5 @@ export default async function Home({ params }: any) {
     </div>
   );
 }
+
+export default Home;

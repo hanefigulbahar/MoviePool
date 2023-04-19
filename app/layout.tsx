@@ -3,8 +3,6 @@ import "@/styles/reset.css";
 import "@/styles/global.css";
 import { Inter } from "next/font/google";
 import StoreProvider from "@/store/store-provider";
-import { cookies } from "next/headers";
-import { store } from "@/store";
 
 export const metadata = {
   title: "MoviePool",

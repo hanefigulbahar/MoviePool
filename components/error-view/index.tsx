@@ -6,7 +6,7 @@ interface ErrorViewProps {}
 
 const ErrorView: FC<ErrorViewProps> = () => {
   const { dictionary } = selectLanguage(Language.en);
-  console.log(dictionary);
+
   return (
     <div
       style={{

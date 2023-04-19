@@ -1,4 +1,4 @@
-import { fetchPopularMovies } from "@/service/movie";
+import { fetchPopular } from "@/service/movie";
 import { Movie } from "@/types/movie";
 import { createSlice } from "@reduxjs/toolkit";
 
@@ -15,7 +15,7 @@ const popularMoviesSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchPopularMovies.fulfilled, (state, action) => {
+    builder.addCase(fetchPopular.fulfilled, (state, action) => {
       state.popularMovies = action.payload;
     });
   },
