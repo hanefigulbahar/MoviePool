@@ -5,13 +5,14 @@ import { Genre } from "@/types/movie";
 
 interface GenresSectionProps {
   genres: Genre[] | null;
+  type?: string;
 }
 
-const GenresSection: FC<GenresSectionProps> = ({ genres }) => {
+const GenresSection: FC<GenresSectionProps> = ({ genres, type }) => {
   return (
     <div className={styles.categoriesSection}>
       {genres?.map((genre: Genre) => (
-        <Genres key={genre.id} name={genre.name} id={genre.id} />
+        <Genres type={type} key={genre.id} name={genre.name} id={genre.id} />
       ))}
     </div>
   );

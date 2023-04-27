@@ -1,9 +1,13 @@
-import { FC } from "react";
+import MovieContainer from "@/containers/movie";
+import { fetchByID } from "@/service/movie";
+import { store } from "@/store";
 
-interface TvDetailPageProps {}
+async function TvDetailPage({ params }: any) {
+  await store.dispatch(fetchByID({ type: "tv", movieID: params.id }));
 
-const TvDetailPage: FC<TvDetailPageProps> = () => {
-  return <div>hello</div>;
-};
+  const { selectedTvSeries } = store.getState().tvByID;
+
+  return <MovieContainer selectedTvSeries={selectedTvSeries} />;
+}
 
 export default TvDetailPage;

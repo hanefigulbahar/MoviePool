@@ -2,18 +2,16 @@
 import Link from "next/link";
 import { FC } from "react";
 import styles from "./styles.module.css";
-import selectedGenre from "@/utils/selectedGenres";
+
 interface GenresProps {
   id: number;
   name: string;
+  type?: string;
 }
 
-const Genres: FC<GenresProps> = ({ name, id }) => {
+const Genres: FC<GenresProps> = ({ name, id, type = "" }) => {
   return (
-    <Link
-      onClick={() => selectedGenre(id)}
-      className={styles.category}
-      href={`${name}/${id.toString()}`}>
+    <Link className={styles.category} href={`${type}${name}/${id.toString()}`}>
       <div>{name}</div>
     </Link>
   );

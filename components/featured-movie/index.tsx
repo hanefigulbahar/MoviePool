@@ -56,7 +56,7 @@ const FeaturedMovie: FC<FeaturedMovieProps> = ({ movieData, tvData, type }) => {
             {dictionary.LANG_KEY_RELEASE}:
             <div className={styles.movieDetailValue}>
               {randomMovie?.release_date?.slice(0, 4)}
-              {randomTv?.first_air_date.slice(0, 4)}
+              {randomTv?.first_air_date?.slice(0, 4)}
             </div>
           </div>
           <div>

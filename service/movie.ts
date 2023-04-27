@@ -1,7 +1,12 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 const BASE_URL = "https://api.themoviedb.org/3";
 
+async function delay(ms: number) {
+  return new Promise((resolve) => setTimeout(resolve, ms));
+}
 async function fetchData(path: string, { query = "" } = {}) {
+  await delay(500);
+
   try {
     const res = await fetch(
       `${BASE_URL}${path}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&${query}`
@@ -47,8 +52,8 @@ export const fetchPopular = createAsyncThunk(
   }
 );
 
-export const fetchMoviesByGenre = createAsyncThunk(
-  "movies/fetchMoviesByGenre",
+export const fetchByGenre = createAsyncThunk(
+  "fetchByGenre",
   async (pathParams: { type: string; id: string }) => {
     const { type, id } = pathParams;
     try {
@@ -62,8 +67,8 @@ export const fetchMoviesByGenre = createAsyncThunk(
   }
 );
 
-export const fetchMoviesByID = createAsyncThunk(
-  "movies/fetchMoviesByID",
+export const fetchByID = createAsyncThunk(
+  "fetchByID",
   async (pathParams: { type: string; movieID: string }) => {
     const { type, movieID } = pathParams;
     try {

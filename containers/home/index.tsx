@@ -21,12 +21,17 @@ const HomeContainer: FC<HomeContainerProps> = ({ categoryName }) => {
         selectedByGenre !== null &&
         !!categoryName && (
           <MovieSection
+            type="movie"
             movie={selectedByGenre}
             title={categoryName.category[0]}
           />
         )}
-      <MovieSection movie={popularMovies} title="Popular Movies" />
-      <MovieSection movie={topRatedMovies} title="TopRated Movies" />
+      <MovieSection type="movie" movie={popularMovies} title="Popular Movies" />
+      <MovieSection
+        type="movie"
+        movie={topRatedMovies}
+        title="TopRated Movies"
+      />
     </div>
   );
 };

@@ -1,6 +1,5 @@
 "use client";
 import React, { FC } from "react";
-import Link from "next/link";
 
 import { BiCameraMovie } from "react-icons/bi";
 import styles from "./styles.module.css";
@@ -16,12 +15,12 @@ const Header: FC<HeaderProps> = () => {
   return (
     <header className={`${styles.header} container fluid`}>
       <div className={styles.headerWrapper}>
-        <Link href={"/"} className={styles.logo}>
+        <a href={"/"} className={styles.logo}>
           <BiCameraMovie />
           MoviePool
-        </Link>
+        </a>
         <nav className={styles.navigationMenu}>
-          <Link href={"/tv"}>{dictionary.LANG_KEY_TV.toLocaleUpperCase()}</Link>
+          <a href={"/tv"}>{dictionary.LANG_KEY_TV.toLocaleUpperCase()}</a>
           <LanguageSwich />
         </nav>
       </div>

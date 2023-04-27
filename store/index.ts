@@ -8,6 +8,8 @@ import popularTvSlice from "@/features/tv-features/popularTvSlice";
 import topRatedTvSlice from "@/features/tv-features/topRatedTvSlice";
 import tvGenresSlice from "@/features/tv-features/tvGenresSlice";
 import { configureStore } from "@reduxjs/toolkit";
+import selectedByGenreTvSlice from "@/features/tv-features/selectedByGenreTvSlice";
+import tvByIDSlice from "@/features/tv-features/tvByIDSlice";
 
 export function createStore(preloadedState = {}) {
   const store = configureStore({
@@ -22,6 +24,9 @@ export function createStore(preloadedState = {}) {
       topRatedTv: topRatedTvSlice,
       popularTv: popularTvSlice,
       genresTv: tvGenresSlice,
+      selectedByGenreTv: selectedByGenreTvSlice,
+      resetSelectedTv: selectedByGenreTvSlice,
+      tvByID: tvByIDSlice,
     },
     preloadedState,
   });

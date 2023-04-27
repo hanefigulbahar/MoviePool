@@ -2,7 +2,6 @@
   margin-top: 24px;
   height: 400px;
   overflow: scroll;
-  scroll-snap-type: x mandatory;
 }
 
 .title {
@@ -19,4 +18,15 @@
   width: max-content;
   height: 300px;
   gap: 24px;
+  scroll-snap-type: x mandatory;
+}
+
+.movie {
+  overflow: hidden;
+  border-radius: 8px;
+  position: relative;
+  box-shadow: 0 5px 10px 0 rgba(0, 0, 0, 0.5);
+  width: 180px;
+  height: 100%;
+  margin: 2rem 0;
 }

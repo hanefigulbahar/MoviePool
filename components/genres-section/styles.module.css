@@ -5,6 +5,7 @@
   overflow: scroll;
   scroll-snap-type: x mandatory;
   margin: 2rem 0;
+  width: 100%;
 }
 .categoriesSection::-webkit-scrollbar {
   display: none;

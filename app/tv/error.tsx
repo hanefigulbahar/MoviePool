@@ -2,8 +2,8 @@
 import ErrorView from "@/components/error-view";
 import React from "react";
 
-function Filter404() {
-  return <ErrorView page="/" />;
+function TvFilter404() {
+  return <ErrorView page={"/tv"} />;
 }
 
-export default Filter404;
+export default TvFilter404;

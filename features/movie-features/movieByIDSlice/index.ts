@@ -1,12 +1,12 @@
-import { fetchMoviesByID } from "@/service/movie";
+import { fetchByID } from "@/service/movie";
 import { MovieDetails } from "@/types/movie";
 import { createSlice } from "@reduxjs/toolkit";
 
-interface MovieByID {
+interface IMovieByID {
   selectedMovie: MovieDetails | null;
 }
 
-const initialState: MovieByID = {
+const initialState: IMovieByID = {
   selectedMovie: null,
 };
 
@@ -15,7 +15,7 @@ const movieByIDSlice = createSlice({
   initialState,
   reducers: {},
   extraReducers: (builder) => {
-    builder.addCase(fetchMoviesByID.fulfilled, (state, action) => {
+    builder.addCase(fetchByID.fulfilled, (state, action) => {
       state.selectedMovie = action.payload;
     });
   },

@@ -12,9 +12,10 @@
   font-weight: 700;
   scroll-snap-align: start;
   border-radius: 30px;
+  width: 100%;
 }
 
 .category div {
-  width: 120px;
+  width: 136px;
   color: black;
 }

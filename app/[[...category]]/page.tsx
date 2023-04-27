@@ -3,7 +3,7 @@ import { resetSelectedMovies } from "@/features/movie-features/selectedByGenreMo
 
 import {
   fetchGenres,
-  fetchMoviesByGenre,
+  fetchByGenre,
   fetchPopular,
   fetchTopRated,
 } from "@/service/movie";
@@ -15,14 +15,13 @@ async function Home({ params }: any) {
   await store.dispatch(fetchGenres("movie"));
 
   const { genres } = store.getState().genres;
-
-  if (params.category !== undefined) {
+  if (params.category !== undefined && params.category[0] !== "favicon.ico") {
     if (
       genres?.find((genre) => genre.id === Number(params.category[1])) &&
       genres?.find((genre) => genre.name == params?.category[0])
     ) {
       await store.dispatch(
-        fetchMoviesByGenre({ type: "movie", id: params.category[1] })
+        fetchByGenre({ type: "movie", id: params.category[1] })
       );
     } else {
       throw new Error();

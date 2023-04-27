@@ -8,7 +8,7 @@ interface MovieSectionProps {
   title: string;
   movie?: Movie[] | null;
   tv?: Tv[] | null;
-  type: string;
+  type?: string;
 }
 
 const MovieSection: FC<MovieSectionProps> = ({ title, movie, tv }) => {

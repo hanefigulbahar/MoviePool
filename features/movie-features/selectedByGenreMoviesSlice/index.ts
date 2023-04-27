@@ -1,4 +1,4 @@
-import { fetchMoviesByGenre, fetchPopularMovies } from "@/service/movie";
+import { fetchByGenre } from "@/service/movie";
 import { Movie } from "@/types/movie";
 import { createSlice } from "@reduxjs/toolkit";
 
@@ -19,7 +19,7 @@ const selectedByGenreMoviesSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder.addCase(fetchMoviesByGenre.fulfilled, (state, action) => {
+    builder.addCase(fetchByGenre.fulfilled, (state, action) => {
       state.selectedByGenre = action.payload;
     });
   },
