@@ -1,12 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 const BASE_URL = "https://api.themoviedb.org/3";
 
-async function delay(ms: number) {
-  return new Promise((resolve) => setTimeout(resolve, ms));
-}
 async function fetchData(path: string, { query = "" } = {}) {
-  await delay(500);
-
   try {
     const res = await fetch(
       `${BASE_URL}${path}?api_key=${process.env.NEXT_PUBLIC_API_KEY}&${query}`
