@@ -16,15 +16,12 @@ interface FeaturedMovieProps {
   tvData?: Tv[] | null;
   type: string;
 }
-
+export function randomData(data: any) {
+  return data ? data[Math.floor(Math.random() * data.length)] : null;
+}
 const FeaturedMovie: FC<FeaturedMovieProps> = ({ movieData, tvData, type }) => {
-  const randomMovie = movieData
-    ? movieData[Math.floor(Math.random() * movieData.length)]
-    : null;
-
-  const randomTv = tvData
-    ? tvData[Math.floor(Math.random() * tvData.length)]
-    : null;
+  const randomMovie = randomData(movieData);
+  const randomTv = randomData(tvData);
 
   const { dictionary } = selectLanguage(Language.en);
 
@@ -35,7 +32,7 @@ const FeaturedMovie: FC<FeaturedMovieProps> = ({ movieData, tvData, type }) => {
           <div className={styles.sectionIcon}>
             <HiOutlineTicket />
           </div>
-          <div className={styles.movieName}>
+          <div data-testid="data-name" className={styles.movieName}>
             {randomMovie?.title}
             {randomTv?.name}
           </div>
