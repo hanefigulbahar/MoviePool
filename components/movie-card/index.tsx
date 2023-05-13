@@ -10,7 +10,7 @@ interface MovieCardProps {
   tv?: Tv;
 }
 
-const MovieCard: FC<MovieCardProps> = ({ movie, tv }) => {
+const MovieCard = ({ movie, tv }: MovieCardProps): JSX.Element => {
   return (
     <>
       {movie && (

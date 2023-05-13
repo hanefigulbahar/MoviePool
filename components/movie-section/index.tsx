@@ -11,7 +11,7 @@ interface MovieSectionProps {
   type?: string;
 }
 
-const MovieSection: FC<MovieSectionProps> = ({ title, movie, tv }) => {
+const MovieSection = ({ title, movie, tv }: MovieSectionProps) => {
   return (
     <div className={styles.moviesSection}>
       <h3 className={styles.title}>{title}</h3>

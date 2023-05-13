@@ -8,7 +8,7 @@ interface HomeContainerProps {
   categoryName: any;
 }
 
-const HomeContainer: FC<HomeContainerProps> = ({ categoryName }) => {
+const HomeContainer = ({ categoryName }: HomeContainerProps): JSX.Element => {
   const { popularMovies } = store.getState().popularMovie;
   const { topRatedMovies } = store.getState().topRatedMovie;
   const { selectedByGenre } = store.getState().selectedByGender;
