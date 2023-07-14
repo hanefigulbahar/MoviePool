@@ -9,7 +9,7 @@ interface GenresProps {
   type?: string;
 }
 
-const Genres: FC<GenresProps> = ({ name, id, type = "" }) => {
+const Genres = ({ name, id, type = "" }: GenresProps) => {
   return (
     <Link className={styles.category} href={`${type}${name}/${id.toString()}`}>
       <div>{name}</div>

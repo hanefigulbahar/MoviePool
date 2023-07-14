@@ -15,6 +15,7 @@ async function Home({ params }: any) {
   await store.dispatch(fetchGenres("movie"));
 
   const { genres } = store.getState().genres;
+
   if (params.category !== undefined && params.category[0] !== "favicon.ico") {
     if (
       genres?.find((genre) => genre.id === Number(params.category[1])) &&
